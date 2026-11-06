@@ -1,5 +1,5 @@
 import { ContactCard } from "@/components/contact/contact-card";
-import { Projects } from "@/components/projects/projects";
+import { Projects } from "@/components/games/games";
 import { FadeIn } from "@/components/ui/motion-primitives";
 import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";

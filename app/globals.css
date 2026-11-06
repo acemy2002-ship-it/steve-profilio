@@ -39,6 +39,8 @@
 
 html {
   color-scheme: light;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) var(--muted);
 }
 
 html.dark {
@@ -217,3 +219,4 @@ html[data-theme-anim="1"]::view-transition-new(root) {
 .project-card:hover .project-card__image-inner {
   transform: scale(1.06);
 }
+

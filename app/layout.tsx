@@ -6,6 +6,7 @@ import { baseMetadata } from "@/lib/metadata";
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
+// @ts-expect-error Next.js processes global CSS imports at build time.
 import "./globals.css";
 
 const geistSans = Geist({

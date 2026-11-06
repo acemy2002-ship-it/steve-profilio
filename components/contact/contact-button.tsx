@@ -1,11 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { Check, Copy, Mail } from "lucide-react";
+import { Check, Copy} from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
+import { DiscordIcon } from "../icons/discord";
 
-const EMAIL = "hello@example.com";
+const DISCORD = "https://discord.com/users/518680476928704527";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ContactButton(): ReactNode {
@@ -14,12 +15,12 @@ export function ContactButton(): ReactNode {
 
   const handleCopy = async (): Promise<void> => {
     try {
-      await navigator.clipboard.writeText(EMAIL);
+      await navigator.clipboard.writeText(DISCORD);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
     } catch {
       const ta = document.createElement("textarea");
-      ta.value = EMAIL;
+      ta.value = DISCORD;
       ta.style.position = "fixed";
       ta.style.opacity = "0";
       document.body.appendChild(ta);
@@ -43,7 +44,7 @@ export function ContactButton(): ReactNode {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       aria-label={
-        copied ? "Email copied" : open ? `Copy ${EMAIL}` : "Show email"
+        copied ? "Discord copied" : open ? `Copy ${DISCORD}` : "Show Discord"
       }
       transition={{ layout: { duration: 0.55, ease: EASE } }}
       style={{ borderRadius: 12 }}
@@ -56,7 +57,7 @@ export function ContactButton(): ReactNode {
         <AnimatePresence initial={false} mode="popLayout">
           {open ? (
             <motion.span
-              key="email"
+              key="discord"
               layout="position"
               initial={{ opacity: 0, filter: "blur(8px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -91,7 +92,7 @@ export function ContactButton(): ReactNode {
                   )}
                 </AnimatePresence>
               </span>
-              <span className="tabular-nums">{EMAIL}</span>
+              <span className="tabular-nums">{DISCORD}</span>
             </motion.span>
           ) : (
             <motion.span
@@ -103,8 +104,8 @@ export function ContactButton(): ReactNode {
               transition={{ duration: 0.35, ease: EASE }}
               className="inline-flex items-center gap-2 whitespace-nowrap"
             >
-              <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>Contact</span>
+              <DiscordIcon className="h-4 w-4" aria-hidden="true" />
+              <span>Discord</span>
             </motion.span>
           )}
         </AnimatePresence>

@@ -21,7 +21,8 @@ type NavItem = {
 
 const NAV_ITEMS: readonly NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
+  { label: "Games", href: "/games" },
+  { label: "Contact", href: "/contact" },
   { label: "About", href: "/about" },
 ];
 
@@ -89,21 +90,21 @@ function NavThemeToggle(): ReactNode {
           : "Toggle theme"
       }
       aria-pressed={mounted ? isDark : undefined}
-      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-background ring-1 ring-foreground/8 transition-colors"
+      className="focus-ring bg-background ring-foreground/8 relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full ring-1 transition-colors"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`text-foreground absolute inset-0 h-4 w-4 transition-all duration-300 ${
             mounted && isDark
-              ? "rotate-0 scale-100 opacity-100"
-              : "-rotate-90 scale-0 opacity-0"
+              ? "scale-100 rotate-0 opacity-100"
+              : "scale-0 -rotate-90 opacity-0"
           }`}
         />
         <Moon
-          className={`absolute inset-0 h-4 w-4 text-foreground transition-all duration-300 ${
+          className={`text-foreground absolute inset-0 h-4 w-4 transition-all duration-300 ${
             mounted && !isDark
-              ? "rotate-0 scale-100 opacity-100"
-              : "rotate-90 scale-0 opacity-0"
+              ? "scale-100 rotate-0 opacity-100"
+              : "scale-0 rotate-90 opacity-0"
           }`}
         />
       </span>
@@ -129,9 +130,9 @@ export function Nav(): ReactNode {
 
   useLayoutEffect(() => {
     const list = listRef.current;
-    const activeEl =
-      activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
+    const activeEl = activeIndex >= 0 ? itemRefs.current[activeIndex] : null;
     if (!list || !activeEl) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPillRect(null);
       return;
     }
@@ -152,9 +153,9 @@ export function Nav(): ReactNode {
   return (
     <nav
       aria-label="Primary"
-      className="fixed left-1/2 top-6 z-50 -translate-x-1/2"
+      className="fixed top-6 left-1/2 z-50 -translate-x-1/2"
     >
-      <div className="flex items-center gap-1 rounded-full bg-background p-1.5 shadow-sm border border-foreground/8">
+      <div className="bg-background border-foreground/8 flex items-center gap-1 rounded-full border p-1.5 shadow-sm">
         <ul ref={listRef} className="relative flex items-center gap-1">
           {pillRect && (
             <motion.span
@@ -167,7 +168,7 @@ export function Nav(): ReactNode {
                   : { duration: 0 }
               }
               style={{ left: 0, top: 0, bottom: 0 }}
-              className="absolute rounded-full bg-foreground/5 ring-1 ring-foreground/8"
+              className="bg-foreground/5 ring-foreground/8 absolute rounded-full ring-1"
             />
           )}
           {NAV_ITEMS.map((item, index) => {
@@ -188,8 +189,8 @@ export function Nav(): ReactNode {
                   <span
                     className={
                       isActive
-                        ? "relative z-10 text-foreground"
-                        : "relative z-10 text-foreground/60 hover:text-foreground"
+                        ? "text-foreground relative z-10"
+                        : "text-foreground/60 hover:text-foreground relative z-10"
                     }
                   >
                     {item.label}

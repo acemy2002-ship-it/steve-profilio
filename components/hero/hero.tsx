@@ -18,19 +18,18 @@ export function Hero(): ReactNode {
               <span aria-hidden="true" className="mx-0.5">
                 👋
               </span>
-              , I&rsquo;m Josh
+              , I&rsquo;m Steve
             </p>
 
             <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
               <span className="block whitespace-nowrap">
-                Design engineer &
+                A FPS &
               </span>
-              <span className="block whitespace-nowrap">AI enthusiast</span>
+              <span className="block whitespace-nowrap">Open World Gamer</span>
             </h1>
 
             <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              Independent engineer focused on interfaces that feel calm,
-              considered, and quietly fast.
+              A passionate gamer who loves to explore new worlds, conquer challenges, and connect with fellow players.
             </p>
 
             <HeroCtas />
@@ -42,7 +41,7 @@ export function Hero(): ReactNode {
                 <PortraitMorph
                   srcA={PORTRAIT_SRC}
                   srcB={PORTRAIT_HOVER_SRC}
-                  alt="Josh portrait"
+                  alt="Steve portrait"
                 />
               </div>
             </div>
