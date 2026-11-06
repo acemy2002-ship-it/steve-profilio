@@ -1,6 +1,7 @@
 import { ContactCard } from "@/components/contact/contact-card";
 import { Hero } from "@/components/hero/hero";
 import { Games } from "@/components/games/games";
+import RealAudio from "@/components/music/music-player";
 import { createMetadata, siteConfig } from "@/lib/metadata";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -17,6 +18,7 @@ export default function HomePage(): ReactNode {
       <Hero />
       <Games withHeadline viewMoreVisible />
       <ContactCard />
+      <RealAudio />
     </main>
   );
 }
