@@ -492,7 +492,7 @@ export const MusicPlayer = ({
       role="region"
       aria-label="Music player"
       tabIndex={0}
-      className={cn("relative mx-auto w-full max-w-[20rem]", className)}
+      className={cn("relative w-full max-w-120", className)}
     >
       {track.url && (
         <audio
@@ -516,7 +516,7 @@ export const MusicPlayer = ({
                 transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
                 className="bg-card ring-border overflow-hidden rounded-2xl ring-1 backdrop-blur-2xl"
               >
-                <div className="flex items-center gap-3 p-2.5">
+                <div className="flex md:flex-row items-center gap-3 p-2.5">
                   {/* Thumbnail — morphs into artwork (wrapper fixes img layoutId distortion) */}
                   <motion.button
                     whileTap={{ scale: 0.96 }}
@@ -616,10 +616,10 @@ export const MusicPlayer = ({
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
               >
-                <div className="bg-card ring-border overflow-hidden rounded-[2rem] p-3 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] ring-1">
+                <div className="bg-background ring-border overflow-hidden rounded-4xl p-3 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] ring-1">
                   {/* ===== Artwork — image appears fully ===== */}
                   <div
-                    className="relative aspect-square w-full overflow-hidden rounded-[1.5rem]"
+                    className="relative aspect-square w-full overflow-hidden rounded-3xl"
                     style={{
                       boxShadow:
                         "rgba(255, 255, 255, 0.1) 0px 0px 0.1px 0px inset, rgba(255, 255, 255, 0.11) 0px 1px 1px 0px inset, rgb(0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.31) 0px 1px 2px 0px",
@@ -639,7 +639,7 @@ export const MusicPlayer = ({
                     </motion.div>
 
                     {/* Bottom scrim for text legibility */}
-                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/80 to-transparent" />
 
                     {/* Top bar: collapse + volume */}
                     <div className="absolute top-4 right-4 left-4 flex items-center justify-between">
@@ -665,7 +665,7 @@ export const MusicPlayer = ({
                               variant="ghost"
                               size="icon"
                               aria-label="Adjust volume"
-                              className="h-8 w-8 rounded-full bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
+                              className="h-8 w-8 rounded-full bg-background text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
                             />
                           }
                         >
@@ -732,7 +732,7 @@ export const MusicPlayer = ({
                       <div className="flex items-center gap-2 text-xl font-bold tracking-tight text-white drop-shadow-lg">
                         <span className="truncate">{track.title}</span>
                         {isPlaying && showEqualizer && (
-                          <span className="flex-shrink-0">
+                          <span className="shrink-0">
                             <WaveBars
                               playing={isPlaying}
                               color={accentColor}
@@ -750,7 +750,7 @@ export const MusicPlayer = ({
                   </div>
 
                   {/* ===== Bottom section: seek + controls ===== */}
-                  <div className="bg-muted/30 rounded-[1.5rem] px-3 pt-3 pb-1">
+                  <div className="bg-muted/30 mt-1 rounded-3xl px-3 pt-3 pb-1">
                     {/* Seek bar as divider */}
                     <div
                       ref={progressRef}
@@ -809,7 +809,7 @@ export const MusicPlayer = ({
                             : "Add to Liked Songs"
                         }
                         aria-pressed={liked}
-                        className="bg-muted/40 text-foreground ring-border hover:bg-muted/60 h-10 w-10 flex-shrink-0 rounded-full ring-1 backdrop-blur-2xl"
+                        className="bg-muted/40 text-foreground ring-border hover:bg-muted/60 h-10 w-10 shrink-0 rounded-full ring-1 backdrop-blur-2xl"
                       >
                         <motion.span
                           animate={
@@ -936,7 +936,7 @@ export const MusicPlayer = ({
                         {...(showQueue
                           ? { style: { color: accentColor } }
                           : {})}
-                        className="bg-muted/40 text-foreground ring-border hover:bg-muted/60 h-10 w-10 flex-shrink-0 rounded-full ring-1 backdrop-blur-2xl"
+                        className="bg-muted/40 text-foreground ring-border hover:bg-muted/60 h-10 w-10 shrink-0 rounded-full ring-1 backdrop-blur-2xl"
                       >
                         <List className="h-3.5 w-3.5" />
                       </MotionButton>
@@ -952,7 +952,7 @@ export const MusicPlayer = ({
                       animate={{ opacity: 1, y: 0, height: "auto" }}
                       exit={{ opacity: 0, y: -8, height: 0 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="border-border bg-card/80 mt-3 overflow-hidden rounded-3xl border backdrop-blur-2xl"
+                      className="border-border bg-background/50 mt-3 overflow-hidden rounded-3xl border backdrop-blur-2xl"
                     >
                       <div className="p-5">
                         <div className="mb-3 flex items-center justify-between">
@@ -985,7 +985,7 @@ export const MusicPlayer = ({
                                     active && "bg-muted"
                                   )}
                                 >
-                                  <div className="relative h-11 w-11 flex-shrink-0 overflow-hidden rounded-lg">
+                                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                       src={qt.artwork}
@@ -1021,7 +1021,7 @@ export const MusicPlayer = ({
                                       {qt.artist}
                                     </p>
                                   </div>
-                                  <span className="text-muted-foreground/60 flex-shrink-0 text-xs tabular-nums">
+                                  <span className="text-muted-foreground/60 shrink-0 text-xs tabular-nums">
                                     {formatTime(qt.duration)}
                                   </span>
                                 </motion.button>

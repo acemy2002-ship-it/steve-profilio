@@ -36,7 +36,7 @@ export function Providers({ children }: { children: ReactNode }): ReactNode {
               hideCursor={false}
             />
             {children}
-            <div className="absolute bottom-0 left-0 h-full w-full -z-10 bg-linear-to-t from-transparent to-background">
+            <div aria-hidden="true" className="absolute bottom-0 left-0 h-2000 w-full -z-10">
               <LightRays
                 raysOrigin="bottom-center"
                 raysColor="#7FE3FF"
@@ -57,9 +57,9 @@ export function Providers({ children }: { children: ReactNode }): ReactNode {
                 noiseAmount={0}
                 distortion={0.12}
                 pulsating={false}
-                cursorShadow
-                clickPulse
-                intro
+                cursorShadow={false}
+                clickPulse={false}
+                intro={false}
                 lightMode={false}
               />
             </div>

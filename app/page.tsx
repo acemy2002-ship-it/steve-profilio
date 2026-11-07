@@ -17,8 +17,8 @@ export default function HomePage(): ReactNode {
     <main id="main-content" className="flex flex-1 flex-col gap-20 sm:gap-28">
       <Hero />
       <Games withHeadline viewMoreVisible />
-      <ContactCard />
       <RealAudio />
+      <ContactCard />
     </main>
   );
 }
