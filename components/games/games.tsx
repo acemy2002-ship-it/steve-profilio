@@ -2,7 +2,7 @@ import { ArrowRight, Smartphone, Monitor, EyeIcon } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import StarBorder from "../StarBorder";
+import { OrbButton } from "@/components/ui/orb-button";
 
 import { FadeIn } from "@/components/ui/motion-primitives";
 import FlipCard from "../FlipCard";
@@ -112,7 +112,7 @@ const GAMES: Game[] = [
     imageAlt: "Red Dead Redemption 2 game mockup",
     status: "A long time ago",
   },
-   {
+  {
     id: "fh5",
     icon: Monitor,
     iconLabel: "Froza Horizon 5",
@@ -162,7 +162,7 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
             </FadeIn>
           )}
 
-          <div className="columns-1 gap-6 md:columns-2 lg:columns-3 md:gap-7">
+          <div className="columns-1 gap-6 md:columns-2 md:gap-7 lg:columns-3">
             {items.map((game, index) => {
               const Icon = game.icon;
 
@@ -232,26 +232,10 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <StarBorder
-                        color="#ffcf8a"
-                        trailColor="#ff4d2e"
-                        duration={12}
-                        direction="clockwise"
-                        stars={2}
-                        trailLength={0.45}
-                        thickness={1}
-                        radius={30}
-                        glow={0.8}
-                        hover="none"
-                        sparkle
-                        clickPulse={false}
-                        theme="dark"
-                        className="my-2"
-                      >
-                        
+                      <OrbButton>
                         <EyeIcon className="h-4 w-4" />
                         {game.clickLabel}
-                      </StarBorder>
+                      </OrbButton>
                     </Link>
                   )}
                 </FadeIn>
