@@ -21,7 +21,6 @@ type NavItem = {
 
 const NAV_ITEMS: readonly NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Games", href: "/games" },
   { label: "Contact", href: "/contact" },
   { label: "About", href: "/about" },
 ];

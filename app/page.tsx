@@ -2,12 +2,13 @@ import { ContactCard } from "@/components/contact/contact-card";
 import { Hero } from "@/components/hero/hero";
 import { Games } from "@/components/games/games";
 import RealAudio from "@/components/music/music-player";
+import { Movies } from "@/components/movies/movies";
 import { createMetadata, siteConfig } from "@/lib/metadata";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = createMetadata({
-  title: "Home",
+  title: "Steve's website",
   description: `Welcome to ${siteConfig.name}. ${siteConfig.description}`,
   path: "/",
 });
@@ -18,6 +19,7 @@ export default function HomePage(): ReactNode {
       <Hero />
       <Games withHeadline viewMoreVisible />
       <RealAudio />
+      <Movies />
       <ContactCard />
     </main>
   );

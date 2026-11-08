@@ -649,7 +649,7 @@ export const MusicPlayer = ({
                         size="icon"
                         onClick={() => setIsCollapsed(true)}
                         aria-label="Collapse player"
-                        className="h-8 w-8 rounded-full bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
+                        className="h-8 w-8 rounded-full bg-black dark:bg-background text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
                       >
                         <ChevronDown className="h-3.5 w-3.5" />
                       </MotionButton>
@@ -665,7 +665,7 @@ export const MusicPlayer = ({
                               variant="ghost"
                               size="icon"
                               aria-label="Adjust volume"
-                              className="h-8 w-8 rounded-full bg-background text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
+                              className="h-8 w-8 rounded-full bg-black dark:bg-background  text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
                             />
                           }
                         >
@@ -678,7 +678,7 @@ export const MusicPlayer = ({
                         <PopoverContent
                           side="bottom"
                           align="end"
-                          className="border-border bg-primary/40 z-40 w-auto rounded-2xl p-3 backdrop-blur-2xl"
+                          className="border-border bg-black/30 z-40 w-auto rounded-2xl p-3 backdrop-blur-2xl"
                         >
                           <div className="flex flex-col items-center gap-2">
                             <span className="text-background text-xs tabular-nums">

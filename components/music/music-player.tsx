@@ -1,16 +1,18 @@
 import { MusicPlayer, Track } from "../ui/music-player";
 import { MorphoTextFlip } from "@/components/ui/morphotextflip";
+import AnimatedContent from "../AnimatedContent";
 
 const queue: Track[] = [
   {
     id: "1",
-    title: "Soledad",
-    artist: "Westlife",
+    title: "Mùa Mưa Âý",
+    artist: "Vũ",
     album: "",
-    artwork: "/assets/soledad.jpg",
-    duration: 219,
-    url: "/assets/soledad.mp3",
+    artwork: "/assets/muamuaay.jpg",
+    duration: 228,
+    url: "/assets/Muamuaay.mp3",
   },
+
   {
     id: "2",
     title: "Thành Phố Phía Đông",
@@ -20,7 +22,7 @@ const queue: Track[] = [
     duration: 222,
     url: "/assets/tppd.mp3",
   },
-   {
+  {
     id: "3",
     title: "Cause I Love You",
     artist: "Noo Phước Thịnh",
@@ -29,28 +31,50 @@ const queue: Track[] = [
     duration: 285,
     url: "/assets/Causeiloveu.mp3",
   },
+  {
+    id: "4",
+    title: "Soledad",
+    artist: "Westlife",
+    album: "",
+    artwork: "/assets/soledad.jpg",
+    duration: 219,
+    url: "/assets/soledad.mp3",
+  },
 ];
 
 export default function RealAudio() {
   return (
-    <section className="flex flex-col items-center justify-center gap-20 px-2">
-      <div className="flex flex-col items-center justify-center gap-3">
-        <h2 className="text-foreground font-serif text-[2.5rem] leading-[1.05] font-medium tracking-tight md:text-[3rem] lg:text-[3.5rem]">
-          Music make me feel
-        </h2>
-        <MorphoTextFlip
-          words={["alive", "relax", "focus", "happy"]}
-          textClassName="text-4xl md:text-5xl text-foreground font-bold"
-          animationType="flipY"
+    <AnimatedContent
+      distance={0}
+      direction="vertical"
+      duration={0.9}
+      ease="expo"
+      delay={0.3}
+      once={false}
+      wipe="up"
+      blur={6}
+      stagger={0.08}
+      threshold={0.1}
+    >
+      <section className="flex flex-col items-center justify-center gap-20 px-2">
+        <div className="flex flex-col items-center justify-center gap-3">
+          <h2 className="text-foreground font-serif text-[2.5rem] leading-[1.05] font-medium tracking-tight md:text-[3rem] lg:text-[3.5rem]">
+            Music make me feel
+          </h2>
+          <MorphoTextFlip
+            words={["alive", "relax", "focus", "happy"]}
+            textClassName="text-4xl md:text-5xl text-foreground font-bold"
+            animationType="flipY"
+          />
+        </div>
+        <MusicPlayer
+          currentTrack={queue[0]!}
+          queue={queue}
+          currentIndex={0}
+          autoPlay={false}
+          className="rounded-xl"
         />
-      </div>
-      <MusicPlayer
-        currentTrack={queue[0]!}
-        queue={queue}
-        currentIndex={0}
-        autoPlay={false}
-        className="rounded-xl"
-      />
-    </section>
+      </section>
+    </AnimatedContent>
   );
 }

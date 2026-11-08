@@ -6,6 +6,7 @@ import StarBorder from "../StarBorder";
 
 import { FadeIn } from "@/components/ui/motion-primitives";
 import FlipCard from "../FlipCard";
+import AnimatedContent from "../AnimatedContent";
 
 type Game = {
   id: string;
@@ -48,7 +49,7 @@ const GAMES: Game[] = [
     icon: Smartphone,
     iconLabel: "RISE OF KINGDOMS",
     image:
-      "https://i.pinimg.com/1200x/3b/95/98/3b959897675e562433683b54f0a83f95.jpg",
+      "https://i.pinimg.com/736x/ac/24/84/ac24847dc3fae188318672675d1a19da.jpg",
 
     clickLabel: "View",
     link: "https://play.google.com/store/apps/details?id=com.king.rok",
@@ -83,13 +84,13 @@ const GAMES: Game[] = [
     icon: Smartphone,
     iconLabel: "Call of Duty: Mobile",
     image:
-      "https://i.pinimg.com/1200x/62/73/86/6273861b81193778439d68dae7a26e71.jpg",
+      "https://i.pinimg.com/736x/63/12/97/6312976df17ebf1e990bcc45adc13b51.jpg",
     clickLabel: "View",
     link: "https://www.callofduty.com/mobile",
     imageAlt: "Call of Duty: Mobile game mockup",
     status: "A long time ago",
   },
-   {
+  {
     id: "rdr2",
     icon: Monitor,
     iconLabel: "Red Dead Redemption 2",
@@ -111,6 +112,17 @@ const GAMES: Game[] = [
     imageAlt: "Red Dead Redemption 2 game mockup",
     status: "A long time ago",
   },
+   {
+    id: "fh5",
+    icon: Monitor,
+    iconLabel: "Froza Horizon 5",
+    image:
+      "https://i.pinimg.com/1200x/cb/6f/e3/cb6fe35de2c4cdbf039ed2cb56ca58ad.jpg",
+    clickLabel: "View",
+    link: "https://www.rockstargames.com/rdr2",
+    imageAlt: "Red Dead Redemption 2 game mockup",
+    status: "A long time ago",
+  },
 ];
 
 export type GamesProps = {
@@ -122,115 +134,132 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
   const items = GAMES;
 
   return (
-    <section className="relative w-full">
-      <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
-        {withHeadline && (
-          <FadeIn className="flex flex-col items-center gap-5 pt-12 pb-10 text-center sm:pt-20 sm:pb-14">
-            <h2 className="text-foreground font-serif text-[2.5rem] leading-[1.05] font-medium tracking-tight md:text-[3rem] lg:text-[3.5rem]">
-              I&apos;m currently playing fps games, but here are a few of my
-              favorite games.
-            </h2>
+    <AnimatedContent
+      distance={0}
+      direction="vertical"
+      duration={0.9}
+      ease="expo"
+      delay={0.3}
+      once={false}
+      wipe="up"
+      blur={6}
+      stagger={0.08}
+      threshold={0.1}
+    >
+      <section className="relative w-full">
+        <div className="mx-auto w-full max-w-275 px-6 sm:px-10">
+          {withHeadline && (
+            <FadeIn className="flex flex-col items-center gap-5 pt-12 pb-10 text-center sm:pt-20 sm:pb-14">
+              <h2 className="text-foreground font-serif text-[2.5rem] leading-[1.05] font-medium tracking-tight md:text-[3rem] lg:text-[3.5rem]">
+                I&apos;m currently playing fps games, but here are a few of my
+                favorite games.
+              </h2>
 
-            <p className="text-foreground/65 max-w-[40ch] text-[18px] leading-[1.45] tracking-tight sm:text-[20px]">
-              From playful experiments to many games, a look at the achievements
-              that have shaped my journey.
-            </p>
-          </FadeIn>
-        )}
+              <p className="text-foreground/65 max-w-[40ch] text-[18px] leading-[1.45] tracking-tight sm:text-[20px]">
+                From playful experiments to many games, a look at the
+                achievements that have shaped my journey.
+              </p>
+            </FadeIn>
+          )}
 
-        <div className="columns-1 gap-6 md:columns-2 md:gap-7">
-          {items.map((game, index) => {
-            const Icon = game.icon;
+          <div className="columns-1 gap-6 md:columns-2 lg:columns-3 md:gap-7">
+            {items.map((game, index) => {
+              const Icon = game.icon;
 
-            return (
-              <FadeIn
-                key={game.id}
-                delay={index * 0.08}
-                className="mb-6 break-inside-avoid px-2 md:mb-7"
-              >
-                <FlipCard
-                  front={
-                    <div className="relative h-full w-full overflow-hidden">
-                      <Image
-                        src={game.image}
-                        alt={game.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-fill"
-                      />
+              return (
+                <FadeIn
+                  key={game.id}
+                  delay={index * 0.08}
+                  className="mb-6 break-inside-avoid px-2 md:mb-7"
+                >
+                  <FlipCard
+                    front={
+                      <div className="relative h-full w-full overflow-hidden">
+                        <Image
+                          src={game.image}
+                          alt={game.imageAlt}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
+                        />
 
-                      <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-black/20" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-black/20" />
 
-                      <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-white backdrop-blur-md">
-                        <Icon className="h-4 w-4" />
+                        <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-white backdrop-blur-md">
+                          <Icon className="h-4 w-4" />
+                        </div>
+
+                        <div className="absolute right-5 bottom-5 left-5">
+                          <p className="mb-2 text-[10px] font-medium tracking-[0.2em] text-white/65 uppercase">
+                            {game.status}
+                          </p>
+
+                          <h3 className="text-2xl font-semibold text-white capitalize sm:text-3xl">
+                            {game.iconLabel}
+                          </h3>
+                        </div>
+
+                        <div className="absolute top-5 right-5 text-white/70">
+                          <ArrowRight className="h-4 w-4 rotate-45" />
+                        </div>
                       </div>
+                    }
+                    axis="y"
+                    flipOnClick={false}
+                    draggable={false}
+                    dragDistance={0}
+                    tilt
+                    tiltMax={8}
+                    glare
+                    glareOpacity={0.15}
+                    hoverScale={1.02}
+                    perspective={1100}
+                    stiffness={170}
+                    damping={20}
+                    width={500}
+                    height={400}
+                    radius={20}
+                    background="#27272a"
+                    color="#171717"
+                    shadow
+                    shadowColor="#000000"
+                    shadowOpacity={0.2}
+                  />
 
-                      <div className="absolute right-5 bottom-5 left-5">
-                        <p className="mb-2 text-[10px] font-medium tracking-[0.2em] text-white/65 uppercase">
-                          {game.status}
-                        </p>
-
-                        <h3 className="text-2xl font-semibold text-white capitalize sm:text-3xl">
-                          {game.iconLabel}
-                        </h3>
-                      </div>
-
-                      <div className="absolute top-5 right-5 text-white/70">
-                        <ArrowRight className="h-4 w-4 rotate-45" />
-                      </div>
-                    </div>
-                  }
-                  axis="y"
-                  flipOnClick={false}
-                  draggable={false}
-                  dragDistance={0}
-                  tilt
-                  tiltMax={8}
-                  glare
-                  glareOpacity={0.15}
-                  hoverScale={1.02}
-                  perspective={1100}
-                  stiffness={170}
-                  damping={20}
-                  width={500}
-                  height={400}
-                  radius={20}
-                  background="#27272a"
-                  color="#171717"
-                  shadow
-                  shadowColor="#000000"
-                  shadowOpacity={0.2}
-                />
-
-                {game.clickLabel && (
-                  <Link
-                    href={game.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <StarBorder
-                      color="#ffcf8a"
-                      trailColor="#ff4d2e"
-                      duration={12}
-                      direction="clockwise"
-                      stars={2}
-                      trailLength={0.45}
-                      thickness={1}
-                      radius={30}
-                      glow={0.8}
-                      hover="none"
-                      sparkle
-                      clickPulse={false}
-                      theme="dark"
-                      className="my-2"
-                    > <EyeIcon className="h-4 w-4" />{game.clickLabel}</StarBorder>
-                  </Link>
-                )}
-              </FadeIn>
-            );
-          })}
+                  {game.clickLabel && (
+                    <Link
+                      href={game.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <StarBorder
+                        color="#ffcf8a"
+                        trailColor="#ff4d2e"
+                        duration={12}
+                        direction="clockwise"
+                        stars={2}
+                        trailLength={0.45}
+                        thickness={1}
+                        radius={30}
+                        glow={0.8}
+                        hover="none"
+                        sparkle
+                        clickPulse={false}
+                        theme="dark"
+                        className="my-2"
+                      >
+                        
+                        <EyeIcon className="h-4 w-4" />
+                        {game.clickLabel}
+                      </StarBorder>
+                    </Link>
+                  )}
+                </FadeIn>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </AnimatedContent>
   );
 }

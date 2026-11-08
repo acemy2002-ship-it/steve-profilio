@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Image } from "@unpic/react";
 
 type Entry = {
   school: string;
@@ -9,19 +10,9 @@ type Entry = {
 
 const ENTRIES: Entry[] = [
   {
-    school: "Rhode Island School of Design",
-    degree: "BFA, Graphic Design",
-    period: "2013 – 2017",
-  },
-  {
-    school: "Stanford University",
-    degree: "HCI Certificate, d.school",
-    period: "2018",
-  },
-  {
-    school: "Bruno Simon's Three.js Journey",
-    degree: "WebGL & Shaders",
-    period: "2022",
+    school: "FPT University",
+    degree: "Software Engineerer",
+    period: "2020 – 2015",
   },
 ];
 
@@ -41,7 +32,7 @@ export function Education(): ReactNode {
               className="bg-background border-foreground/5 flex items-center gap-4 rounded-3xl border p-2"
               style={{ minHeight: ROW_HEIGHT }}
             >
-              <SchoolLogo entry={entry} />
+              <SchoolLogo />
               <div className="flex min-w-0 flex-col">
                 <span className="text-foreground text-[17px] font-semibold tracking-tight sm:text-[18px]">
                   {entry.school}
@@ -60,28 +51,20 @@ export function Education(): ReactNode {
   );
 }
 
-function SchoolLogo({ entry }: { entry: Entry }): ReactNode {
-  const initials = entry.school.charAt(0);
+function SchoolLogo(): ReactNode {
   return (
     <span
       className="border-foreground/15 inline-flex h-12 w-12 shrink-0 items-center justify-center border"
       aria-hidden="true"
       style={{ borderRadius: 14 }}
     >
-      {entry.slug ? (
-        <img
-          src={`https://cdn.simpleicons.org/${entry.slug}`}
-          alt=""
-          width={24}
-          height={24}
-          className="h-6 w-6"
-          draggable={false}
-        />
-      ) : (
-        <span className="text-foreground/60 text-[18px] font-semibold tracking-tight">
-          {initials}
-        </span>
-      )}
+      <Image
+        src="https://images.seeklogo.com/logo-png/25/1/fpt-university-logo-png_seeklogo-252587.png"
+        alt=""
+        className="h-6 w-6"
+        layout="fullWidth"
+        draggable={false}
+      />
     </span>
   );
 }
