@@ -232,8 +232,7 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <OrbButton>
-                        <EyeIcon className="h-4 w-4" />
+                      <OrbButton size="sm">
                         {game.clickLabel}
                       </OrbButton>
                     </Link>
