@@ -1,4 +1,4 @@
-import { ArrowRight, Smartphone, Monitor, EyeIcon } from "lucide-react";
+import { ArrowRight, Smartphone, Monitor } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
