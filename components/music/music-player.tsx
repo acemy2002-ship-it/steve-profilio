@@ -29,7 +29,7 @@ const queue: Track[] = [
     album: "",
     artwork: "/assets/causeiloveu.jpg",
     duration: 285,
-    url: "/assets/Causeiloveu.mp3",
+    url: "/assets/Cause-i-love-u.mp3",
   },
   {
     id: "4",
@@ -38,7 +38,7 @@ const queue: Track[] = [
     album: "",
     artwork: "/assets/soledad.jpg",
     duration: 219,
-    url: "/assets/soledad.mp3",
+    url: "/assets/Soledad.mp3",
   },
 ];
 
