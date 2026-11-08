@@ -337,7 +337,7 @@ const LightPillar = ({
     noiseIntensity: Math.max(0, noiseIntensity),
     fade: clamp(fade, 0, 1),
     intro,
-    scale: clamp(resolution ?? QUALITY[quality] ?? QUALITY.high, MIN_SCALE, 2),
+    scale: clamp(Number(resolution ?? QUALITY[quality] ?? QUALITY.high), MIN_SCALE, 2),
     lightMode,
     paused
   };
@@ -406,7 +406,7 @@ const LightPillar = ({
         probe.fillStyle = value;
         probe.fillRect(0, 0, 1, 1);
         const [r, g, b] = probe.getImageData(0, 0, 1, 1).data;
-        rgb = [r / 255, g / 255, b / 255];
+        rgb = [(r ?? 0) / 255, (g ?? 0) / 255, (b ?? 0) / 255];
       }
       colorCache.set(value, rgb);
       return rgb;
@@ -457,20 +457,20 @@ const LightPillar = ({
       gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
       gl.viewport(0, 0, target.width, target.height);
       gl.useProgram(marchProgram.program);
-      gl.uniform1f(m.uTime, state.clock * s.flow);
-      gl.uniform2f(m.uResolution, view.width, view.height);
-      gl.uniform2f(m.uTarget, target.width, target.height);
-      gl.uniform2f(m.uRot, Math.cos(angle), Math.sin(angle));
-      gl.uniform2f(m.uPillarRot, Math.cos(tilt), Math.sin(tilt));
-      gl.uniform2f(m.uWave, Math.sin(s.twist), Math.cos(s.twist));
-      gl.uniform1f(m.uShift, state.shift);
-      gl.uniform1f(m.uPillarWidth, width);
-      gl.uniform1f(m.uPillarHeight, s.pillarHeight);
-      gl.uniform1i(m.uDetail, s.detail);
-      gl.uniform3fv(m.uTopColor, toRgb(s.topColor));
-      gl.uniform3fv(m.uBottomColor, toRgb(s.bottomColor));
-      gl.uniform1f(m.uGlowAmount, s.glowAmount);
-      gl.uniform1f(m.uWidthNorm, width / 3);
+      gl.uniform1f(m.uTime ?? null, state.clock * s.flow);
+      gl.uniform2f(m.uResolution ?? null, view.width, view.height);
+      gl.uniform2f(m.uTarget ?? null, target.width, target.height);
+      gl.uniform2f(m.uRot ?? null, Math.cos(angle), Math.sin(angle));
+      gl.uniform2f(m.uPillarRot ?? null, Math.cos(tilt), Math.sin(tilt));
+      gl.uniform2f(m.uWave ?? null, Math.sin(s.twist), Math.cos(s.twist));
+      gl.uniform1f(m.uShift ?? null, state.shift);
+      gl.uniform1f(m.uPillarWidth ?? null, width);
+      gl.uniform1f(m.uPillarHeight ?? null, s.pillarHeight);
+      gl.uniform1i(m.uDetail ?? null, s.detail);
+      gl.uniform3fv(m.uTopColor ?? null, toRgb(s.topColor));
+      gl.uniform3fv(m.uBottomColor ?? null, toRgb(s.bottomColor));
+      gl.uniform1f(m.uGlowAmount ?? null, s.glowAmount);
+      gl.uniform1f(m.uWidthNorm ?? null, width / 3);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       gl.bindTexture(gl.TEXTURE_2D, texture);
       if (s.bloom > 0) gl.generateMipmap(gl.TEXTURE_2D);
@@ -486,24 +486,24 @@ const LightPillar = ({
       gl.useProgram(compositeProgram.program);
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, texture);
-      gl.uniform1i(c.uField, 0);
-      gl.uniform2f(c.uFieldSize, target.width, target.height);
-      gl.uniform2f(c.uView, canvas.width, canvas.height);
-      gl.uniform2f(c.uAspect, view.width / view.height, 1);
-      gl.uniform2f(c.uPillarRot, Math.cos(tilt), Math.sin(tilt));
-      gl.uniform1f(c.uShift, state.shift);
-      gl.uniform1f(c.uIntensity, s.intensity * (0.15 + 0.85 * rise) * (1 + 0.12 * state.touch));
-      gl.uniform1f(c.uNoiseIntensity, s.noiseIntensity);
-      gl.uniform1f(c.uLightMode, s.lightMode ? 1 : 0);
+      gl.uniform1i(c.uField ?? null, 0);
+      gl.uniform2f(c.uFieldSize ?? null, target.width, target.height);
+      gl.uniform2f(c.uView ?? null, canvas.width, canvas.height);
+      gl.uniform2f(c.uAspect ?? null, view.width / view.height, 1);
+      gl.uniform2f(c.uPillarRot ?? null, Math.cos(tilt), Math.sin(tilt));
+      gl.uniform1f(c.uShift ?? null, state.shift);
+      gl.uniform1f(c.uIntensity ?? null, s.intensity * (0.15 + 0.85 * rise) * (1 + 0.12 * state.touch));
+      gl.uniform1f(c.uNoiseIntensity ?? null, s.noiseIntensity);
+      gl.uniform1f(c.uLightMode ?? null, s.lightMode ? 1 : 0);
       const chroma = (rgb: number[]) => Math.max(...rgb) - Math.min(...rgb);
       const vivid = Math.max(chroma(toRgb(s.topColor)), chroma(toRgb(s.bottomColor)));
-      gl.uniform1f(c.uNeutral, 1 - clamp((vivid - 0.08) / 0.12, 0, 1));
-      gl.uniform1f(c.uBloom, s.bloom);
-      gl.uniform1f(c.uFade, s.fade);
+      gl.uniform1f(c.uNeutral ?? null, 1 - clamp((vivid - 0.08) / 0.12, 0, 1));
+      gl.uniform1f(c.uBloom ?? null, s.bloom);
+      gl.uniform1f(c.uFade ?? null, s.fade);
       const span = view.width / view.height + 1.2;
-      gl.uniform1f(c.uReveal, state.intro >= 1 ? 1e4 : -span + rise * (span * 2 + 1.2));
-      gl.uniform1f(c.uFlare, state.intro >= 1 ? 0 : (1 - rise) * 1.3 * Math.min(1, state.intro * 8));
-      gl.uniform4fv(c.uPulses, pulseData);
+      gl.uniform1f(c.uReveal ?? null, state.intro >= 1 ? 1e4 : -span + rise * (span * 2 + 1.2));
+      gl.uniform1f(c.uFlare ?? null, state.intro >= 1 ? 0 : (1 - rise) * 1.3 * Math.min(1, state.intro * 8));
+      gl.uniform4fv(c.uPulses ?? null, pulseData);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
@@ -545,8 +545,10 @@ const LightPillar = ({
       state.touch += ((engaged ? 1 : 0) - state.touch) * (1 - Math.exp(-dt * 3));
 
       for (let i = pulses.length - 1; i >= 0; i--) {
-        pulses[i].age += dt;
-        if (pulses[i].age > PULSE_LIFE * 2.2) pulses.splice(i, 1);
+        const pulse = pulses[i];
+        if (!pulse) continue;
+        pulse.age += dt;
+        if (pulse.age > PULSE_LIFE * 2.2) pulses.splice(i, 1);
       }
 
       render();
