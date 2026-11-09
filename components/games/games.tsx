@@ -1,6 +1,6 @@
 import { ArrowRight, Smartphone, Monitor } from "lucide-react";
 import type { ComponentType, ReactNode } from "react";
-import Image from "next/image";
+import { Image } from "@unpic/react";
 import Link from "next/link";
 import { OrbButton } from "@/components/ui/orb-button";
 
@@ -35,7 +35,7 @@ const GAMES: Game[] = [
   {
     id: "cs2",
     icon: Monitor,
-    iconLabel: "COUNTER-STRIKE 2",
+    iconLabel: "Counter strike 2",
     image:
       "https://i.pinimg.com/1200x/5c/72/18/5c7218fb96e67ec06e225ca60bdb8d46.jpg",
 
@@ -47,7 +47,7 @@ const GAMES: Game[] = [
   {
     id: "rok",
     icon: Smartphone,
-    iconLabel: "RISE OF KINGDOMS",
+    iconLabel: "Rise of Kingdoms",
     image:
       "https://i.pinimg.com/736x/ac/24/84/ac24847dc3fae188318672675d1a19da.jpg",
 
@@ -178,9 +178,8 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                         <Image
                           src={game.image}
                           alt={game.imageAlt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover"
+                          layout="fullWidth"
+                          className="absolute inset-0 h-full w-full object-cover"
                         />
 
                         <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-black/20" />
@@ -194,7 +193,7 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                             {game.status}
                           </p>
 
-                          <h3 className="text-2xl font-semibold text-white capitalize sm:text-3xl">
+                          <h3 className="text-xl font-semibold text-white capitalize sm:text-2xl">
                             {game.iconLabel}
                           </h3>
                         </div>
@@ -222,8 +221,8 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                     background="#27272a"
                     color="#171717"
                     shadow
-                    shadowColor="#000000"
-                    shadowOpacity={0.2}
+                    shadowColor="#00F"
+                    shadowOpacity={0.22}
                   />
 
                   {game.clickLabel && (
@@ -232,7 +231,7 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <OrbButton size="sm">
+                      <OrbButton size="sm" className="mt-2">
                         {game.clickLabel}
                       </OrbButton>
                     </Link>

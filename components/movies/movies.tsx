@@ -18,7 +18,7 @@ const MOVIES: Movie[] = [
     alt: "got",
     type: "Sci-Fi & Fantasy, Drama, and Action & Adventure",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+      "https://artworks.thetvdb.com/banners/posters/121361-4.jpg",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const MOVIES: Movie[] = [
     alt: "st",
     type: "Action & Adventure, Mystery, and Sci-Fi & Fantasy",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg",
+      "https://artworks.thetvdb.com/banners/posters/305288-4.jpg",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const MOVIES: Movie[] = [
     alt: "aoud",
     type: "Action & Adventure, Drama, and Sci-Fi & Fantasy",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
+      "https://artworks.thetvdb.com/banners/v4/series/382142/posters/61ed2bad7e051.jpg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const MOVIES: Movie[] = [
     alt: "tlou",
     type: "Drama",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/dmo6TYuuJgaYinXBPjrgG9mB5od.jpg",
+      "https://artworks.thetvdb.com/banners/v4/series/392256/posters/6362e8b41ca10.jpg",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const MOVIES: Movie[] = [
     alt: "tb",
     type: "Sci-Fi & Fantasy and Action & Adventure",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/in1R2dDc421JxsoRWaIIAqVI2KE.jpg",
+      "https://artworks.thetvdb.com/banners/posters/5c5c402b075cc.jpg",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const MOVIES: Movie[] = [
     alt: "mp",
     type: "Action & Adventure, Crime, and Drama",
     defaultSrc:
-      "https://www.themoviedb.org/t/p/w600_and_h900_face/tM6xqRKXoloH9UchaJEyyRE9O1w.jpg",
+      "https://artworks.thetvdb.com/banners/posters/331980-3.jpg",
   },
 ];
 

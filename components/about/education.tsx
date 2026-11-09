@@ -12,7 +12,7 @@ const ENTRIES: Entry[] = [
   {
     school: "FPT University",
     degree: "Software Engineerer",
-    period: "2020 – 2015",
+    period: "2020 – 2025",
   },
 ];
 
