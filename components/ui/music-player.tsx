@@ -30,7 +30,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 export interface Track {
@@ -516,7 +516,7 @@ export const MusicPlayer = ({
                 transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
                 className="bg-card ring-border overflow-hidden rounded-2xl ring-1 backdrop-blur-2xl"
               >
-                <div className="flex md:flex-row items-center gap-3 p-2.5">
+                <div className="flex items-center gap-3 p-2.5 md:flex-row">
                   {/* Thumbnail — morphs into artwork (wrapper fixes img layoutId distortion) */}
                   <motion.button
                     whileTap={{ scale: 0.96 }}
@@ -649,7 +649,7 @@ export const MusicPlayer = ({
                         size="icon"
                         onClick={() => setIsCollapsed(true)}
                         aria-label="Collapse player"
-                        className="h-8 w-8 rounded-full bg-black dark:bg-background text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
+                        className="dark:bg-background h-8 w-8 rounded-full bg-black text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
                       >
                         <ChevronDown className="h-3.5 w-3.5" />
                       </MotionButton>
@@ -665,7 +665,7 @@ export const MusicPlayer = ({
                               variant="ghost"
                               size="icon"
                               aria-label="Adjust volume"
-                              className="h-8 w-8 rounded-full bg-black dark:bg-background  text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
+                              className="dark:bg-background h-8 w-8 rounded-full bg-black text-white ring-1 ring-white/20 backdrop-blur-md hover:bg-white/20"
                             />
                           }
                         >
@@ -678,7 +678,7 @@ export const MusicPlayer = ({
                         <PopoverContent
                           side="bottom"
                           align="end"
-                          className="border-border bg-black/30 z-40 w-auto rounded-2xl p-3 backdrop-blur-2xl"
+                          className="border-border z-40 w-auto rounded-2xl bg-black/30 p-3 backdrop-blur-2xl"
                         >
                           <div className="flex flex-col items-center gap-2">
                             <span className="text-background text-xs tabular-nums">
@@ -959,6 +959,7 @@ export const MusicPlayer = ({
                           <p className="text-foreground text-sm font-semibold">
                             Up Next · {queue.length}
                           </p>
+
                           <Button
                             variant="ghost"
                             size="icon"
@@ -969,10 +970,12 @@ export const MusicPlayer = ({
                             <X className="h-4 w-4" />
                           </Button>
                         </div>
-                        <ScrollArea className="max-h-64 pr-1">
-                          <div className="space-y-1">
+
+                        <ScrollArea data-lenis-prevent className="h-70 w-full">
+                          <div className="space-y-1 pr-3">
                             {queue.map((qt, index) => {
                               const active = index === activeIndex;
+
                               return (
                                 <motion.button
                                   key={qt.id}
@@ -985,6 +988,7 @@ export const MusicPlayer = ({
                                     active && "bg-muted"
                                   )}
                                 >
+                                  {/* Artwork */}
                                   <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg">
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
@@ -992,6 +996,7 @@ export const MusicPlayer = ({
                                       alt=""
                                       className="h-full w-full object-cover"
                                     />
+
                                     {active && isPlaying && showEqualizer && (
                                       <div className="bg-primary/50 absolute inset-0 flex items-end justify-center pb-1.5">
                                         <WaveBars
@@ -1002,6 +1007,8 @@ export const MusicPlayer = ({
                                       </div>
                                     )}
                                   </div>
+
+                                  {/* Track information */}
                                   <div className="min-w-0 flex-1">
                                     <p
                                       className="truncate text-sm"
@@ -1017,10 +1024,13 @@ export const MusicPlayer = ({
                                         {qt.title}
                                       </span>
                                     </p>
+
                                     <p className="text-muted-foreground/60 truncate text-xs">
                                       {qt.artist}
                                     </p>
                                   </div>
+
+                                  {/* Duration */}
                                   <span className="text-muted-foreground/60 shrink-0 text-xs tabular-nums">
                                     {formatTime(qt.duration)}
                                   </span>
@@ -1028,6 +1038,7 @@ export const MusicPlayer = ({
                               );
                             })}
                           </div>
+                           <ScrollBar orientation="vertical"/>
                         </ScrollArea>
                       </div>
                     </motion.div>

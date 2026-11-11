@@ -40,6 +40,15 @@ const queue: Track[] = [
     duration: 219,
     url: "/assets/Soledad.mp3",
   },
+  {
+    id: "5",
+    title: "In Another Life",
+    artist: "Katy Perry",
+    album: "The One That You Got Away",
+    artwork: "/assets/in-another-life.jpg",
+    duration: 219,
+    url: "/assets/In-another-life.mp3",
+  },
 ];
 
 export default function RealAudio() {

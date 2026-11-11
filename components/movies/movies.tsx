@@ -18,7 +18,7 @@ const MOVIES: Movie[] = [
     alt: "got",
     type: "Sci-Fi & Fantasy, Drama, and Action & Adventure",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/posters/121361-4.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410608/121361-4.avif",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const MOVIES: Movie[] = [
     alt: "st",
     type: "Action & Adventure, Mystery, and Sci-Fi & Fantasy",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/posters/305288-4.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410607/305288-4.avif",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const MOVIES: Movie[] = [
     alt: "aoud",
     type: "Action & Adventure, Drama, and Sci-Fi & Fantasy",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/v4/series/382142/posters/61ed2bad7e051.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410605/61ed2bad7e051.avif",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const MOVIES: Movie[] = [
     alt: "tlou",
     type: "Drama",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/v4/series/392256/posters/6362e8b41ca10.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410604/6362e8b41ca10.avif",
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ const MOVIES: Movie[] = [
     alt: "tb",
     type: "Sci-Fi & Fantasy and Action & Adventure",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/posters/5c5c402b075cc.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410600/5c5c402b075cc.avif",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const MOVIES: Movie[] = [
     alt: "mp",
     type: "Action & Adventure, Crime, and Drama",
     defaultSrc:
-      "https://artworks.thetvdb.com/banners/posters/331980-3.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794410602/331980-3.avif",
   },
 ];
 
@@ -97,7 +97,7 @@ export function Movies(): ReactNode {
             Movies
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:grid-cols-5 self-center">
           {MOVIES.map((movie) => (
             <div key={movie.id} className="flex flex-col gap-3">
               <MediaCard marqueeClassName="bg-background/50 text-white">
@@ -106,7 +106,7 @@ export function Movies(): ReactNode {
                   alt={movie.alt}
                   title={movie.type}
                   type="image"
-                  className="w-full max-w-sm"
+                  className="w-full max-w-sm md:max-w-xs"
                 />
               </MediaCard>
               <div>

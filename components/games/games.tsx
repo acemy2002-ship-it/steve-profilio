@@ -25,10 +25,10 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "VALORANT",
     image:
-      "https://i.pinimg.com/1200x/39/dc/66/39dc66a4fbaa85dcd12a49f216b60ead.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409231/39dc66a4fbaa85dcd12a49f216b60ead.avif",
 
     clickLabel: "View",
-    link: "https://playvalorant.com",
+    link: "/game/valorant",
     imageAlt: "Loom AI writing companion mockup",
     status: "Currently Playing",
   },
@@ -37,7 +37,7 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "Counter strike 2",
     image:
-      "https://i.pinimg.com/1200x/5c/72/18/5c7218fb96e67ec06e225ca60bdb8d46.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409229/5c7218fb96e67ec06e225ca60bdb8d46.avif",
 
     clickLabel: "View",
     link: "https://store.steampowered.com/app/730/CounterStrike_2/",
@@ -49,7 +49,7 @@ const GAMES: Game[] = [
     icon: Smartphone,
     iconLabel: "Rise of Kingdoms",
     image:
-      "https://i.pinimg.com/736x/ac/24/84/ac24847dc3fae188318672675d1a19da.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409228/ac24847dc3fae188318672675d1a19da.avif",
 
     clickLabel: "View",
     link: "https://play.google.com/store/apps/details?id=com.king.rok",
@@ -61,7 +61,7 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "GTA San Andreas",
     image:
-      "https://i.pinimg.com/1200x/55/8a/c9/558ac9f78ff06ec64cf754bfaded5acb.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409226/558ac9f78ff06ec64cf754bfaded5acb.avif",
     clickLabel: "View",
     link: "https://www.rockstargames.com/sanandreas",
     imageAlt: "GTA San Andreas game mockup",
@@ -73,7 +73,7 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "GTA Vice City",
     image:
-      "https://i.pinimg.com/736x/5f/d5/a9/5fd5a9740371ea143057ceba4e8e5518.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409225/5fd5a9740371ea143057ceba4e8e5518.avif",
     clickLabel: "View",
     link: "https://www.rockstargames.com/vicecity",
     imageAlt: "GTA Vice City game mockup",
@@ -84,7 +84,7 @@ const GAMES: Game[] = [
     icon: Smartphone,
     iconLabel: "Call of Duty: Mobile",
     image:
-      "https://i.pinimg.com/736x/63/12/97/6312976df17ebf1e990bcc45adc13b51.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409222/6312976df17ebf1e990bcc45adc13b51.avif",
     clickLabel: "View",
     link: "https://www.callofduty.com/mobile",
     imageAlt: "Call of Duty: Mobile game mockup",
@@ -95,7 +95,7 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "Red Dead Redemption 2",
     image:
-      "https://i.pinimg.com/736x/d1/13/9b/d1139b1ee12965f315652a3eb970aa28.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409221/d1139b1ee12965f315652a3eb970aa28.avif",
     clickLabel: "View",
     link: "https://www.rockstargames.com/rdr2",
     imageAlt: "Red Dead Redemption 2 game mockup",
@@ -106,7 +106,7 @@ const GAMES: Game[] = [
     icon: Smartphone,
     iconLabel: "Arena of Valor",
     image:
-      "https://i.pinimg.com/736x/80/53/8e/80538e693a09a3efe93a42adf6f5d36d.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409219/80538e693a09a3efe93a42adf6f5d36d.avif",
     clickLabel: "View",
     link: "https://www.rockstargames.com/rdr2",
     imageAlt: "Red Dead Redemption 2 game mockup",
@@ -117,7 +117,7 @@ const GAMES: Game[] = [
     icon: Monitor,
     iconLabel: "Froza Horizon 5",
     image:
-      "https://i.pinimg.com/1200x/cb/6f/e3/cb6fe35de2c4cdbf039ed2cb56ca58ad.jpg",
+      "https://res.cloudinary.com/uyecgpkd/image/upload/v1794409217/cb6fe35de2c4cdbf039ed2cb56ca58ad.avif",
     clickLabel: "View",
     link: "https://www.rockstargames.com/rdr2",
     imageAlt: "Red Dead Redemption 2 game mockup",
@@ -226,11 +226,7 @@ export function Games({ withHeadline = false }: GamesProps): ReactNode {
                   />
 
                   {game.clickLabel && (
-                    <Link
-                      href={game.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link href={game.link}>
                       <OrbButton size="sm" className="mt-2">
                         {game.clickLabel}
                       </OrbButton>
